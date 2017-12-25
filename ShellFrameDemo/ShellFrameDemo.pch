@@ -1,0 +1,34 @@
+//
+//  ShellFrameDemo.pch
+//  ShellFrameDemo
+//
+//  Created by Ios_Developer on 2017/12/7.
+//  Copyright © 2017年 hai. All rights reserved.
+//
+
+#ifndef ShellFrameDemo_pch
+#define ShellFrameDemo_pch
+
+/*
+ 定义常用宏 如：屏幕宽高 安全距离（iphoneX后）接口前缀 工具类 第三方 等
+ */
+
+//size
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define SafeAreaTopHeight (IMX_SCREEN_HEIGHT_UIKIT == 812.0 ? 88 : 64)
+#define SafeAreaBottomHeight (IMX_SCREEN_HEIGHT_UIKIT == 812.0 ? 34 : 0)
+
+//ios11后 controller.automaticallyAdjustsScrollViewInsets方法弃用的处理
+#define AdjustsScrollViewInsetNever(controller,view) if(@available(iOS 11.0, *)) {view.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;} else if([controller isKindOfClass:[UIViewController class]]) {controller.automaticallyAdjustsScrollViewInsets = false;}
+
+//tools
+#import "ToolBox.h"
+#import "Factory.h"
+
+//color
+//16进制颜色给色方法
+#define UIColorFromHex(s)  [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0 green:(((s &0xFF00) >>8))/255.0 blue:((s & 0xFF))/255.0 alpha:1.0]
+
+#endif /* ShellFrameDemo_pch */
