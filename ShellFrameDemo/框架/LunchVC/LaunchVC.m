@@ -120,8 +120,7 @@
     
     int pageNum = scrollView.contentOffset.x/SCREEN_WIDTH;
     _pc.currentPage = pageNum;
-    
-    if (scrollView.contentOffset.x > SCREEN_WIDTH * 4 + 20)
+    if (scrollView.contentOffset.x > SCREEN_WIDTH * 3 + 20)
     {
         //进入首页
         AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

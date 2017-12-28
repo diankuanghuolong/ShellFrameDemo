@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6B1B6D41FF4CE9D008D5F3A /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B1B6D31FF4CE9D008D5F3A /* HomeModel.m */; };
+		B6B1B6D71FF4CEB0008D5F3A /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B1B6D61FF4CEB0008D5F3A /* HomeView.m */; };
+		B6B1B6DC1FF4CEF5008D5F3A /* CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B1B6DB1FF4CEF5008D5F3A /* CommunityModel.m */; };
+		B6B1B6DF1FF4CF02008D5F3A /* CommunityView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B1B6DE1FF4CF02008D5F3A /* CommunityView.m */; };
+		B6B1B6E41FF4CF40008D5F3A /* PersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B1B6E31FF4CF40008D5F3A /* PersonCenterModel.m */; };
+		B6B1B6E71FF4CF4E008D5F3A /* PersonCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B1B6E61FF4CF4E008D5F3A /* PersonCenterView.m */; };
 		B6B937481FD789D000AE1A91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B937471FD789D000AE1A91 /* AppDelegate.m */; };
 		B6B9374E1FD789D000AE1A91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6B9374C1FD789D000AE1A91 /* Main.storyboard */; };
 		B6B937501FD789D000AE1A91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6B9374F1FD789D000AE1A91 /* Assets.xcassets */; };
@@ -26,6 +32,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6B1B6D21FF4CE9D008D5F3A /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		B6B1B6D31FF4CE9D008D5F3A /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
+		B6B1B6D51FF4CEB0008D5F3A /* HomeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
+		B6B1B6D61FF4CEB0008D5F3A /* HomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		B6B1B6DA1FF4CEF5008D5F3A /* CommunityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityModel.h; sourceTree = "<group>"; };
+		B6B1B6DB1FF4CEF5008D5F3A /* CommunityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityModel.m; sourceTree = "<group>"; };
+		B6B1B6DD1FF4CF02008D5F3A /* CommunityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommunityView.h; sourceTree = "<group>"; };
+		B6B1B6DE1FF4CF02008D5F3A /* CommunityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommunityView.m; sourceTree = "<group>"; };
+		B6B1B6E21FF4CF40008D5F3A /* PersonCenterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterModel.h; sourceTree = "<group>"; };
+		B6B1B6E31FF4CF40008D5F3A /* PersonCenterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterModel.m; sourceTree = "<group>"; };
+		B6B1B6E51FF4CF4E008D5F3A /* PersonCenterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonCenterView.h; sourceTree = "<group>"; };
+		B6B1B6E61FF4CF4E008D5F3A /* PersonCenterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonCenterView.m; sourceTree = "<group>"; };
 		B6B937431FD789D000AE1A91 /* ShellFrameDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShellFrameDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B937461FD789D000AE1A91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6B937471FD789D000AE1A91 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +89,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6B1B6D01FF4CE67008D5F3A /* HomeVies */ = {
+			isa = PBXGroup;
+			children = (
+				B6B1B6D51FF4CEB0008D5F3A /* HomeView.h */,
+				B6B1B6D61FF4CEB0008D5F3A /* HomeView.m */,
+			);
+			path = HomeVies;
+			sourceTree = "<group>";
+		};
+		B6B1B6D11FF4CE67008D5F3A /* HomeModles */ = {
+			isa = PBXGroup;
+			children = (
+				B6B1B6D21FF4CE9D008D5F3A /* HomeModel.h */,
+				B6B1B6D31FF4CE9D008D5F3A /* HomeModel.m */,
+			);
+			path = HomeModles;
+			sourceTree = "<group>";
+		};
+		B6B1B6D81FF4CEE4008D5F3A /* CommunityViews */ = {
+			isa = PBXGroup;
+			children = (
+				B6B1B6DD1FF4CF02008D5F3A /* CommunityView.h */,
+				B6B1B6DE1FF4CF02008D5F3A /* CommunityView.m */,
+			);
+			path = CommunityViews;
+			sourceTree = "<group>";
+		};
+		B6B1B6D91FF4CEE4008D5F3A /* CommunityModels */ = {
+			isa = PBXGroup;
+			children = (
+				B6B1B6DA1FF4CEF5008D5F3A /* CommunityModel.h */,
+				B6B1B6DB1FF4CEF5008D5F3A /* CommunityModel.m */,
+			);
+			path = CommunityModels;
+			sourceTree = "<group>";
+		};
+		B6B1B6E01FF4CF2C008D5F3A /* PersonCenterViews */ = {
+			isa = PBXGroup;
+			children = (
+				B6B1B6E51FF4CF4E008D5F3A /* PersonCenterView.h */,
+				B6B1B6E61FF4CF4E008D5F3A /* PersonCenterView.m */,
+			);
+			path = PersonCenterViews;
+			sourceTree = "<group>";
+		};
+		B6B1B6E11FF4CF2C008D5F3A /* PersonCenterModel */ = {
+			isa = PBXGroup;
+			children = (
+				B6B1B6E21FF4CF40008D5F3A /* PersonCenterModel.h */,
+				B6B1B6E31FF4CF40008D5F3A /* PersonCenterModel.m */,
+			);
+			path = PersonCenterModel;
+			sourceTree = "<group>";
+		};
 		B6B9373A1FD789D000AE1A91 = {
 			isa = PBXGroup;
 			children = (
@@ -153,17 +225,10 @@
 			isa = PBXGroup;
 			children = (
 				B6F2D1D61FD91CAF00937D29 /* CommunityVCs */,
-				B6F2D1D51FD91CAF00937D29 /* CommunityModels */,
-				B6F2D1D71FD91CAF00937D29 /* CommunityViews */,
+				B6B1B6D91FF4CEE4008D5F3A /* CommunityModels */,
+				B6B1B6D81FF4CEE4008D5F3A /* CommunityViews */,
 			);
 			path = Community;
-			sourceTree = "<group>";
-		};
-		B6F2D1D51FD91CAF00937D29 /* CommunityModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CommunityModels;
 			sourceTree = "<group>";
 		};
 		B6F2D1D61FD91CAF00937D29 /* CommunityVCs */ = {
@@ -175,28 +240,14 @@
 			path = CommunityVCs;
 			sourceTree = "<group>";
 		};
-		B6F2D1D71FD91CAF00937D29 /* CommunityViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CommunityViews;
-			sourceTree = "<group>";
-		};
 		B6F2D1D81FD91CAF00937D29 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				B6F2D1DA1FD91CAF00937D29 /* HomeVCs */,
-				B6F2D1D91FD91CAF00937D29 /* HomeModels */,
-				B6F2D1DB1FD91CAF00937D29 /* HomeViews */,
+				B6B1B6D11FF4CE67008D5F3A /* HomeModles */,
+				B6B1B6D01FF4CE67008D5F3A /* HomeVies */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		B6F2D1D91FD91CAF00937D29 /* HomeModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HomeModels;
 			sourceTree = "<group>";
 		};
 		B6F2D1DA1FD91CAF00937D29 /* HomeVCs */ = {
@@ -208,28 +259,14 @@
 			path = HomeVCs;
 			sourceTree = "<group>";
 		};
-		B6F2D1DB1FD91CAF00937D29 /* HomeViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HomeViews;
-			sourceTree = "<group>";
-		};
 		B6F2D1DC1FD91CAF00937D29 /* PersonCenter */ = {
 			isa = PBXGroup;
 			children = (
+				B6B1B6E11FF4CF2C008D5F3A /* PersonCenterModel */,
+				B6B1B6E01FF4CF2C008D5F3A /* PersonCenterViews */,
 				B6F2D1DE1FD91CAF00937D29 /* PersonCenterVCs */,
-				B6F2D1DD1FD91CAF00937D29 /* PersonCenterModels */,
-				B6F2D1DF1FD91CAF00937D29 /* PersonCenterViews */,
 			);
 			path = PersonCenter;
-			sourceTree = "<group>";
-		};
-		B6F2D1DD1FD91CAF00937D29 /* PersonCenterModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PersonCenterModels;
 			sourceTree = "<group>";
 		};
 		B6F2D1DE1FD91CAF00937D29 /* PersonCenterVCs */ = {
@@ -239,13 +276,6 @@
 				B6F2D1E71FD91D6A00937D29 /* PersonCenterVC.m */,
 			);
 			path = PersonCenterVCs;
-			sourceTree = "<group>";
-		};
-		B6F2D1DF1FD91CAF00937D29 /* PersonCenterViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PersonCenterViews;
 			sourceTree = "<group>";
 		};
 		B6F2D1E91FD91FF600937D29 /* Tools */ = {
@@ -334,11 +364,17 @@
 				B6F2D1E51FD91D4400937D29 /* CommunityVC.m in Sources */,
 				B6B937561FD789D000AE1A91 /* main.m in Sources */,
 				B6B937691FD79A3200AE1A91 /* BaseViewController.m in Sources */,
+				B6B1B6D71FF4CEB0008D5F3A /* HomeView.m in Sources */,
 				B6F2D1EF1FD91FF600937D29 /* ToolBox.m in Sources */,
 				B6B937661FD7972800AE1A91 /* BaseNavigationCtr.m in Sources */,
 				B6B937601FD78AE000AE1A91 /* BaseTabBarVC.m in Sources */,
 				B6B937631FD78B0C00AE1A91 /* BaseTabBarItem.m in Sources */,
+				B6B1B6E41FF4CF40008D5F3A /* PersonCenterModel.m in Sources */,
+				B6B1B6D41FF4CE9D008D5F3A /* HomeModel.m in Sources */,
+				B6B1B6E71FF4CF4E008D5F3A /* PersonCenterView.m in Sources */,
 				B6F2D1E21FD91CE600937D29 /* HomeVC.m in Sources */,
+				B6B1B6DF1FF4CF02008D5F3A /* CommunityView.m in Sources */,
+				B6B1B6DC1FF4CEF5008D5F3A /* CommunityModel.m in Sources */,
 				B6B937481FD789D000AE1A91 /* AppDelegate.m in Sources */,
 				B6F2D1EE1FD91FF600937D29 /* Factory.m in Sources */,
 				B6F2D1E81FD91D6A00937D29 /* PersonCenterVC.m in Sources */,

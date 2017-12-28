@@ -19,6 +19,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"首页";//-----标题title给的方法必须这样。不然自定义的tabbar会和系统的冲突
     self.view.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (void)didReceiveMemoryWarning {
