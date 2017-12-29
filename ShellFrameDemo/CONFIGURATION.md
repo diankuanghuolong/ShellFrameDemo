@@ -18,11 +18,12 @@ README
                                     定位权限：Privacy - Location When In Use Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据
                                     定位权限: Privacy - Location Always Usage Description 我们需要通过您的地理位置信息获取您周边的相关数据
                                     定位的需要这么写，防止上架被拒。
-                            （4）https 处理 ：（plist中设置）
+                                    注：iOS11中相机新加权限：NSPhotoLibraryAddUsageDescription
+                    （4）https 处理 ：（plist中设置）
                                         添加App Transport Security Settings项 ，并加入Allow Arbitrary Loads：YES键值对
-                            （5）PCH文件配置 ： TARGET-Build Settings 下搜索 ：prefix Header 修改路径为相对路径：$(SRCROOT)/项目名/pch文件路径/PrefixHeader.pch
-                            （6）URL Schemes 白名单配置：
-                            （7）pod文件配置 ：
+                    （5）PCH文件配置 ： TARGET-Build Settings 下搜索 ：prefix Header 修改路径为相对路径：$(SRCROOT)/项目名/pch文件路径/PrefixHeader.pch
+                    （6）URL Schemes 白名单配置：
+                    （7）pod文件配置 ：
                                                         platform :ios, '8.0'
                                                         target '项目名如：ShellFrameDemo’ do
                                                         // 第三方库 例：
