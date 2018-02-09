@@ -16,6 +16,7 @@
 }
 #pragma mark  =====  property  =====
 @property(nonatomic,strong)UIView * navBarBGView;  //-----自定义导航栏视图
+@property(nonatomic,strong)NSURLSessionDataTask *task;//---如果网络请求中，返回上一个页面，取消请求
 
 #pragma mark  ===== action  ======
 -(void)createCustomBackButtonOnNavBar;            //------自定义返回按钮

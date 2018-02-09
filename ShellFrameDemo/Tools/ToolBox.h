@@ -38,6 +38,8 @@
 +(NSString *)getEntryPhoneNum:(NSString *)number;
 +(NSString *)getStr:(NSString *)str withType:(int)type;//0 姓名 1 身份证 （修改姓名除了第一位外改为*只适用中文3个字内的姓名 ------ 修改身份证除第一位和最后一位外改为*）
 
+//判断是否为手机号
++(BOOL)isTruePhone:(NSString *)phoneStr;
 //修改字符串某段为*
 #pragma warmming 待加入
 
@@ -46,4 +48,11 @@
 
 //label 后面或前面添加图片
 + (void)setLabelText:(UILabel *)label andImage:(UIImage *)image andBounds:(CGRect)bounds andIsBeforeText:(BOOL)isBeforeText;
+
+//返回到指定控制器
++(void)backToTargetVC:(Class)targetVC fromNowNC:(UINavigationController *)nowNC;
+
+//判断返回数据是否为null
++(BOOL)dataISEmpty:(id)text;
 @end
+

@@ -21,8 +21,14 @@
 #define NavBarLineColor  UIColorFromHex(0xaaaaaa)   // ----- 自定义导航栏底部线条颜色
 
 #pragma mark  ===== sizes  =====
+
+#pragma clang diagnostic push//-----------消除与pch相同宏警告（这里之所以再次定义，是为了保证代码的高度可移植性，不必关联本项目中的pch文件）
+#pragma clang diagnostic ignored "-Wmacro-redefined"
+
 #define SafeAreaTopHeight ([UIScreen mainScreen].bounds.size.width == 812.0 ? 88 : 64)//安全区域到顶部高度
 #define SafeAreaBottomHeight ([UIScreen mainScreen].bounds.size.height == 812.0 ? 34 : 0)//安全区域到底部高度
+
+#pragma clang diagnostic pop//-----------消除与pch相同宏警告
 @interface BaseViewController ()
 
 @end
@@ -110,6 +116,9 @@
     return nil;
 }
 - (void)back{
+    if(self.task) {
+        [self.task cancel];//取消当前界面的数据请求.
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

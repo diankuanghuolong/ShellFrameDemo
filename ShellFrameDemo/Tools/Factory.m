@@ -45,4 +45,13 @@
     tf.returnKeyType = returnKeytype;
     return  tf;
 }
+//线条
++(UIView *)getLineView:(CGRect)rect
+{
+    
+    UIView * view =[[UIView alloc] initWithFrame:rect];
+    view.backgroundColor = UIColorFromHex(0xaaaaaa);
+    return  view;
+}
 @end
+

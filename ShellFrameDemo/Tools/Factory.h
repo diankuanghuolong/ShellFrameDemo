@@ -16,4 +16,7 @@
 //textfield
 +(UITextField *)getTextField:(CGRect) rect andFontSize:(CGFloat)fontSize andTextColor:(UIColor *)textColor andPlaceHolder:(NSString *)placeHolder andKeyboardType:(UIKeyboardType)keyboardType andReturnKeyType:(UIReturnKeyType) returnKeytype;
 
+//line
++(UIView *)getLineView:(CGRect)rect;
 @end
+

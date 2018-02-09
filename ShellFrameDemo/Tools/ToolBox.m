@@ -40,7 +40,7 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
     [calendar setTimeZone:timeZone];
-
+    
     NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitWeekday;
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
     if([dateComponent weekday]==1) return 7;
@@ -105,8 +105,8 @@
 }
 +(BOOL) clearCache
 {
-//    [[SDImageCache sharedImageCache] clearDisk];
-//    [[SDImageCache sharedImageCache] clearMemory];
+    //    [[SDImageCache sharedImageCache] clearDisk];
+    //    [[SDImageCache sharedImageCache] clearMemory];
     NSString  * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     NSFileManager* manager = [NSFileManager defaultManager];
     NSArray * childerFiles = [manager subpathsAtPath:cachePath];
@@ -127,9 +127,8 @@
     NSAttributedString *attrStr = [[NSAttributedString  alloc] initWithString:s];
     NSRange range = NSMakeRange(0, attrStr.length);
     NSMutableDictionary *dic = [attrStr attributesAtIndex:0 effectiveRange:&range].mutableCopy;
-    NSDictionary *dic1 =@{NSFontAttributeName:[UIFont fontWithName:@"Arial" size:fontSize]};// 获取该段attributedString的属性字典1
+    NSDictionary *dic1 = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};
     [dic addEntriesFromDictionary:dic1];
-    
     
     // 计算文本的大小
     textSize = [s boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading // 文本绘制时的附加选项
@@ -158,16 +157,16 @@
 }
 +(void)noticeContent:(NSString *)content andShowView:(UIView *)view andyOffset:(CGFloat)yOffset;
 {
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-//    hud.mode = MBProgressHUDModeText;
-//    hud.label.text = content;
-//    hud.label.textColor = UIColorFromHex(0xffffff);
-//    hud.label.superview.backgroundColor = BlackColor;
-//    hud.label.font = [UIFont systemFontOfSize:14];
-//    hud.margin = 8.f;
-//    hud.offset = CGPointMake(0, yOffset);
-//    hud.removeFromSuperViewOnHide = YES;
-//    [hud hideAnimated:YES afterDelay:1];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = content;
+    hud.label.textColor = UIColorFromHex(0xffffff);
+    hud.label.superview.backgroundColor = [UIColor blackColor];
+    hud.label.font = [UIFont systemFontOfSize:20];
+    hud.margin = 8.f;
+    hud.offset = CGPointMake(0, yOffset);
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hideAnimated:YES afterDelay:1];
 }
 
 + (CGSize)getShowImageSize:(UIImage *)image andOrigialSize:(CGSize)size
@@ -188,7 +187,7 @@
     }
     
     return CGSizeMake(image.size.width * rate, image.size.height * rate);
-
+    
 }
 +(NSString *)getStrIds:(NSArray *)strs
 {
@@ -255,7 +254,31 @@
     }
     return replaceStr;
 }
-
+//判断是否是手机号
++(BOOL)isTruePhone:(NSString *)phoneStr
+{
+    //移动，联通，电信···
+    NSString * MOBILE = @"^1(3[0-9]|4[57]|5[0-35-9]|7[01678]|8[0-9])\\d{8}$";
+    NSString * CM = @"^1(3[4-9]|4[7]|5[0-27-9]|7[0]|7[8]|8[2-478])\\d{8}$";
+    NSString * CU = @"^1(3[0-2]|4[5]|5[56]|709|7[1]|7[6]|8[56])\\d{8}$";
+    NSString * CT = @"^1(3[34]|53|77|700|8[019])\\d{8}$";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+    
+    if (([regextestmobile evaluateWithObject:phoneStr] == YES)
+        || ([regextestcm evaluateWithObject:phoneStr] == YES)
+        || ([regextestct evaluateWithObject:phoneStr] == YES)
+        || ([regextestcu evaluateWithObject:phoneStr] == YES))
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
 //判断当前控制器是否正在显示
 +(BOOL)isCurrentViewControllerVisible:(UIViewController *)viewController
 {
@@ -282,4 +305,31 @@
         label.attributedText = mas;
     }
 }
+//返回到指定控制器
++(void)backToTargetVC:(Class)targetVC fromNowNC:(UINavigationController *)nowNC
+{
+    for (UIViewController *controller in nowNC.viewControllers) {
+        if ([controller isKindOfClass:targetVC]) {
+            [nowNC popToViewController:controller animated:YES];
+        }
+    }
+}
+
+//后台返回数据是否为空处理
++(BOOL)dataISEmpty:(id)text
+{
+    if ([text isEqual:[NSNull null]]) {
+        return YES;
+    }
+    else if ([text isKindOfClass:[NSNull class]])
+    {
+        return YES;
+    }
+    else if (text == nil){
+        return YES;
+    }
+    return NO;
+}
+
 @end
+
