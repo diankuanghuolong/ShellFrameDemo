@@ -18,6 +18,11 @@
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
+    //超时时间
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 8.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    
     NSURLSessionDataTask * task = [manager POST:baseURL parameters:baseParameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

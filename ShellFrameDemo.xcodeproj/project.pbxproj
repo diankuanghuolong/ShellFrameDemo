@@ -228,10 +228,10 @@
 			children = (
 				B6B937671FD79A3200AE1A91 /* BaseViewController.h */,
 				B6B937681FD79A3200AE1A91 /* BaseViewController.m */,
-				B65132E4202D4A3D006DCA4C /* BaseAFN.h */,
-				B65132E6202D4A3E006DCA4C /* BaseAFN.m */,
 				B65132E5202D4A3E006DCA4C /* BaseModel.h */,
 				B65132E3202D4A3D006DCA4C /* BaseModel.m */,
+				B65132E4202D4A3D006DCA4C /* BaseAFN.h */,
+				B65132E6202D4A3E006DCA4C /* BaseAFN.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
