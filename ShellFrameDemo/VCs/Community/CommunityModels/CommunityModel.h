@@ -6,8 +6,8 @@
 //  Copyright © 2017年 hai. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface CommunityModel : NSObject
+@interface CommunityModel : BaseModel
 
 @end
