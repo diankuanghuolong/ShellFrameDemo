@@ -31,7 +31,7 @@
 //16进制颜色给色方法
 #define UIColorFromHex(s)  [UIColor colorWithRed:(((s & 0xFF0000) >> 16))/255.0 green:(((s &0xFF00) >>8))/255.0 blue:((s & 0xFF))/255.0 alpha:1.0]
 
-
+#define BG_COlOR UIColorFromHex(0xf2f2f3)       //背景颜色
 #pragma mark  =====  第三方  =====
 /*
   本来这个框架，是不想导入第三方的，希望尽量是自己来完善。但是今天未了完善下工具类toobox和一个网络请求处理，导入afn和mbhud，这两个也都会用到，就导入进来来
