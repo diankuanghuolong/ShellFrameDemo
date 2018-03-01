@@ -279,6 +279,27 @@
         return NO;
     }
 }
+//判断是是固定电话
++ (BOOL)isTelephone:(NSString *)phoneNum
+{
+    
+    /**
+     
+     * 大陆地区固话及小灵通
+     
+     * 区号：010,020,021,022,023,024,025,027,028,029
+     
+     * 号码：七位或八位
+     
+     */
+    
+    NSString * FT = @"^(0[0-9]{2})\\d{8}$|^(0[0-9]{3}(\\d{7,8}))$";
+    
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", FT];
+    
+    return [regextestcm evaluateWithObject:phoneNum];
+    
+}
 //判断当前控制器是否正在显示
 +(BOOL)isCurrentViewControllerVisible:(UIViewController *)viewController
 {

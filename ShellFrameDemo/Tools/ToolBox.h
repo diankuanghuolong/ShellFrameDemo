@@ -40,6 +40,8 @@
 
 //判断是否为手机号
 +(BOOL)isTruePhone:(NSString *)phoneStr;
+//判断是否是固定电话话
++ (BOOL)isTelephone:(NSString *)phoneNum;
 //修改字符串某段为*
 #pragma warmming 待加入
 
