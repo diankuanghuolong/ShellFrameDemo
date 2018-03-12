@@ -33,9 +33,15 @@
         
         if(baseFailure)
             baseFailure(error);
-        
-        [ToolBox noticeContent:@"请求服务器失败" andShowView:ShowInView andyOffset:SCREEN_HEIGHT/2 - SafeAreaBottomHeight - 200];
-        NSLog(@"BaseError == %@",error);
+        if (error.code == -1001)
+        {
+            [ToolBox noticeContent:@"请求超时" andShowView:ShowInView andyOffset:SCREEN_HEIGHT/2 - SafeAreaBottomHeight - 200];
+        }
+        else
+        {
+            [ToolBox noticeContent:@"请求服务器失败" andShowView:ShowInView andyOffset:SCREEN_HEIGHT/2 - SafeAreaBottomHeight - 200];
+        }
+        NSLog(@"error.code == %ld  BaseError == %@",(long)error.code,error);
     }];
     
     return task;
