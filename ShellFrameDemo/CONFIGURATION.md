@@ -8,8 +8,7 @@ README
 //3.VCs文件下为演示VC
 
 //4.基本配置
-
-
+```
                     （1）TARGETS-Device Orientation下只选Portrait 关闭横竖屏
                     
                     （2）PROJECT-LOcalizations下添加 Chinese（simplified）全选 设置中文环境
@@ -59,7 +58,7 @@ README
                                                         pod 'AFNetworking', '~> 3.1.0'
                                                         
                                                         end
-                            
+```         
                             
                             
                             
