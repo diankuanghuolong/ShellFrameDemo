@@ -37,7 +37,7 @@ README
                                     
                                     定位的需要这么写，防止上架被拒。
                                     
-                                    注：iOS11中相机新加权限：NSPhotoLibraryAddUsageDescription
+                                    注：iOS11中相机新加权限：NSPhotoLibraryAddUsageDescription  写入相册权限
                                     
                     （4）https 处理 ：（plist中设置）
                     
