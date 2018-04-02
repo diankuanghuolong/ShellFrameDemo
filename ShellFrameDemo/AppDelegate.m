@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#define ThemeColor UIColorFromHex(0x83be05)     //主题颜色
 
 /*
    1. 导入baseTabbarVC 和 launchVC 进入app视图
@@ -49,9 +49,15 @@
 #pragma mark  ===== 系统风格-导航／状态栏设置  =====
 -(void)customizeNavigaitonBarAppearance
 {
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigation_bar_bg_white"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:NavBarTitleColor,NSForegroundColorAttributeName,NavBarTitleFont,NSFontAttributeName,nil]];
-    [UINavigationBar appearance].translucent = YES;
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigation_bar_bg_white"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:NavBarTitleColor,NSForegroundColorAttributeName,NavBarTitleFont,NSFontAttributeName,nil]];
+//    [UINavigationBar appearance].translucent = YES;
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    UINavigationBar *bar = [UINavigationBar appearance];
+    bar.barTintColor = ThemeColor;
+    bar.tintColor = [UIColor clearColor];
+    bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 }
 
 #pragma mark
