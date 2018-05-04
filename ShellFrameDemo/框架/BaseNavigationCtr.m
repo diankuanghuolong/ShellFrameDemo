@@ -38,6 +38,7 @@
     __weak typeof (self) weakSelf = self;
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.delegate = weakSelf;
+        self.delegate = weakSelf;
     }
 }
 #pragma mark  =====  navigationControllerDelegate  didShowViewController  =====
