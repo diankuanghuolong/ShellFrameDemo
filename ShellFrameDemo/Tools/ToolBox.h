@@ -66,6 +66,11 @@
 //判断返回数据是否为null
 +(BOOL)dataISEmpty:(id)text;
 
+
+//字符串base64编码
++(NSString *)base64EncodeString:(NSString *)string;
+//base64解码
++(NSString *)base64DecodeString:(NSString *)string;
 //md5加密小写
 +(NSString *)encode_md5:(NSString *)string withLength:(NSInteger)length;
 //md5加密小写
