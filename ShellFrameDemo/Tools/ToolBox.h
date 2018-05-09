@@ -27,6 +27,8 @@
 +(BOOL)isTureStatusNumber:(NSString *)statusNum;
 //网络加载返回提示信息显示框
 +(void)noticeContent:(NSString *)content andShowView:(UIView *)view andyOffset:(CGFloat)yOffset;
+//网络加载返回提示信息显示框+自定义延迟时间
++(void)noticeContent:(NSString *)content andShowView:(UIView *)view andyOffset:(CGFloat)yOffset withDelay:(int)delay;
 
 + (CGSize)getShowImageSize:(UIImage *)image andOrigialSize:(CGSize)size;
 
@@ -48,13 +50,24 @@
 ////判断当前控制器是否正在显示
 +(BOOL)isCurrentViewControllerVisible:(UIViewController *)viewController;
 
+//图片压缩
++(NSData *)imageData:(UIImage *)myimage;
++ (NSData *)imx_compressImage:(UIImage *)img ToSize:(NSInteger)intSize;
+
 //label 后面或前面添加图片
 + (void)setLabelText:(UILabel *)label andImage:(UIImage *)image andBounds:(CGRect)bounds andIsBeforeText:(BOOL)isBeforeText;
 
 //返回到指定控制器
 +(void)backToTargetVC:(Class)targetVC fromNowNC:(UINavigationController *)nowNC;
 
+//获取用户信息
++(NSDictionary *)getUserInfoDic;
+
 //判断返回数据是否为null
 +(BOOL)dataISEmpty:(id)text;
-@end
 
+//md5加密小写
++(NSString *)encode_md5:(NSString *)string withLength:(NSInteger)length;
+//md5加密小写
++(NSString *)ecode_MD5:(NSString *)string withLength:(int)length;
+@end
