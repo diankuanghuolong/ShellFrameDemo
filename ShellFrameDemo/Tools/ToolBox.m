@@ -7,6 +7,7 @@
 
 #import "ToolBox.h"
 #import "AppDelegate.h"
+#import<CommonCrypto/CommonDigest.h>//md5
 
 @implementation ToolBox
 +(NSInteger)getYear:(NSDate *)date
@@ -40,7 +41,7 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
     [calendar setTimeZone:timeZone];
-    
+
     NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay|NSCalendarUnitWeekday;
     NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
     if([dateComponent weekday]==1) return 7;
@@ -105,8 +106,8 @@
 }
 +(BOOL) clearCache
 {
-    //    [[SDImageCache sharedImageCache] clearDisk];
-    //    [[SDImageCache sharedImageCache] clearMemory];
+//    [[SDImageCache sharedImageCache] clearDisk];
+//    [[SDImageCache sharedImageCache] clearMemory];
     NSString  * cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
     NSFileManager* manager = [NSFileManager defaultManager];
     NSArray * childerFiles = [manager subpathsAtPath:cachePath];
@@ -161,12 +162,27 @@
     hud.mode = MBProgressHUDModeText;
     hud.label.text = content;
     hud.label.textColor = UIColorFromHex(0xffffff);
-    hud.label.superview.backgroundColor = [UIColor blackColor];
+    hud.label.superview.backgroundColor = SystemBlack;
     hud.label.font = [UIFont systemFontOfSize:20];
+    hud.label.numberOfLines = 0;
     hud.margin = 8.f;
     hud.offset = CGPointMake(0, yOffset);
     hud.removeFromSuperViewOnHide = YES;
     [hud hideAnimated:YES afterDelay:1];
+}
++(void)noticeContent:(NSString *)content andShowView:(UIView *)view andyOffset:(CGFloat)yOffset withDelay:(int)delay
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = content;
+    hud.label.textColor = UIColorFromHex(0xffffff);
+    hud.label.superview.backgroundColor = SystemBlack;
+    hud.label.font = [UIFont systemFontOfSize:20];
+    hud.label.numberOfLines = 0;
+    hud.margin = 8.f;
+    hud.offset = CGPointMake(0, yOffset);
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hideAnimated:YES afterDelay:delay ? delay : 1];
 }
 
 + (CGSize)getShowImageSize:(UIImage *)image andOrigialSize:(CGSize)size
@@ -187,7 +203,7 @@
     }
     
     return CGSizeMake(image.size.width * rate, image.size.height * rate);
-    
+
 }
 +(NSString *)getStrIds:(NSArray *)strs
 {
@@ -279,9 +295,8 @@
         return NO;
     }
 }
-//判断是是固定电话
-+ (BOOL)isTelephone:(NSString *)phoneNum
-{
+//判断是否是固定电话话
++ (BOOL)isTelephone:(NSString *)phoneNum {
     
     /**
      
@@ -306,6 +321,82 @@
     return (viewController.isViewLoaded && viewController.view.window);
 }
 
+//图片压缩
++(NSData *)imageData:(UIImage *)myimage//图片压缩
+{
+    NSData *data=UIImageJPEGRepresentation(myimage, 1.0);
+    if (data.length>100*1024)
+    {
+        if (data.length>1024*1024)
+        {//1M以及以上
+            data=UIImageJPEGRepresentation(myimage, 0.1);
+        }
+        else if (data.length>512*1024)
+        {//0.5M-1M
+            data=UIImageJPEGRepresentation(myimage, 0.5);
+        }
+        else if (data.length>200*1024)
+        {//0.25M-0.5M
+            data=UIImageJPEGRepresentation(myimage, 0.9);
+        }
+    }
+    return data;
+}
++ (NSData *)imx_compressImage:(UIImage *)img ToSize:(NSInteger)intSize
+{
+    if (img == nil || ![img isKindOfClass:[UIImage class]]) {
+        return nil;
+    }
+    
+    NSData * imageData = UIImageJPEGRepresentation(img,1);
+    /// 最终要求的大小和目前大小的比
+    double fltBeiShu = [imageData length]/1024.00/intSize;
+    
+    if (fltBeiShu <1) {
+        return imageData;
+    }
+    /// 压缩的次数
+    NSInteger intCount = 0;
+    NSInteger lastDataLenght = [imageData length];
+    while (fltBeiShu > 1) {
+        /// 这次压缩的倍数
+        imageData = UIImageJPEGRepresentation(img,1);
+        fltBeiShu = [imageData length]/1024.00/intSize;
+        CGFloat fltBei = 1.0;
+        
+        for (int a = 0; a<fltBeiShu+intCount; a++) {
+            fltBei = fltBei * 0.9;
+        }
+        /// 这次压缩的倍数
+        fltBeiShu = fltBei;
+        NSLog(@"系数:%lf",fltBeiShu);
+        
+        imageData = UIImageJPEGRepresentation(img,fltBeiShu);
+        intCount ++;
+        /// 跟新要求的大小和目前大小的比
+        fltBeiShu = [imageData length]/(intSize * 1024.00);
+        NSLog(@"%lf",[imageData length]/1024.00);
+        NSLog(@"%lu第%ld次压缩，压缩后的大小%f",(unsigned long)[imageData length],(long)intCount,fltBeiShu);
+        
+        //如果压缩大小不能再改变（压缩到最大限度），直接返回压缩结果
+        if (imageData.length == lastDataLenght)
+        {
+            imageData = UIImageJPEGRepresentation(img,0.005);
+            NSLog(@"压缩到：%ld上次压缩到：%ld",imageData.length,lastDataLenght);
+            return imageData;
+        }
+        
+        /// 压缩次数超过四次就压缩到到最大压缩限度
+        if (intCount >4) {
+            imageData = UIImageJPEGRepresentation(img,0.005);
+            return imageData;
+        }
+        
+        lastDataLenght = imageData.length;
+    }
+    
+    return imageData;
+}
 #pragma mark  ===== label中字体后跟图标  =====
 + (void)setLabelText:(UILabel *)label andImage:(UIImage *)image andBounds:(CGRect)bounds andIsBeforeText:(BOOL)isBeforeText
 {
@@ -335,8 +426,17 @@
         }
     }
 }
+#pragma mark ===== json  =====
++(NSDictionary *)getUserInfoDic
+{
+    NSString *userStr = [[NSString alloc] initWithData:/*(NSData *)*/[[NSUserDefaults standardUserDefaults] objectForKey:USERINFO] encoding:NSUTF8StringEncoding];
+    
+    NSData * data = [userStr dataUsingEncoding:NSUTF8StringEncoding];
 
-//后台返回数据是否为空处理
+    NSDictionary *userInfoDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    
+    return userInfoDict;
+}
 +(BOOL)dataISEmpty:(id)text
 {
     if ([text isEqual:[NSNull null]]) {
@@ -352,5 +452,50 @@
     return NO;
 }
 
-@end
+#pragma mark  =====  编码解码  =====
+//字符串base64编码
++(NSString *)base64EncodeString:(NSString *)string
+{
+    // 1.先转换为二进制数据
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    // 2.对二进制数据进行base64编码,完成之后返回字符串
+    return [data base64EncodedStringWithOptions:0];
+}
+//base64解码
++(NSString *)base64DecodeString:(NSString *)string
+{
+    // 注意:该字符串是base64编码后的字符串
+    // 1.转换为二进制数据(完成了解码的过程)
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:string options:0];
+    
+    // 2.把二进制数据在转换为字符串
+    return [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+}
 
+//md5加密小写
++(NSString *)encode_md5:(NSString *)string withLength:(NSInteger)length
+{
+    
+    const char *str = [string UTF8String];
+    if (str == NULL) {
+        str = "";
+    }
+    unsigned char digest[/*CC_MD5_DIGEST_LENGTH*/length];
+    
+    CC_MD5( str, (CC_LONG)strlen(str), digest );
+    
+    NSMutableString *result = [NSMutableString stringWithCapacity:/*CC_MD5_DIGEST_LENGTH*/length *2];
+    
+    for(int i =0; i < /*CC_MD5_DIGEST_LENGTH*/length; i++)
+        
+        [result appendFormat:@"%02x", digest[i]];
+    
+    return result;
+}
+//md5加密大写
++(NSString *)ecode_MD5:(NSString *)string withLength:(int)length
+{
+    
+    return [ToolBox encode_md5:string withLength:length].uppercaseString;
+}
+@end
